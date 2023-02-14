@@ -11,9 +11,13 @@ import EnhancedMousePositionViewer from "./MousePositionViewer";
 import { MouseTracker } from "./MouseTracker";
 import { HookCounter } from "./HookCounter";
 import { LoginForm } from "./LoginForm";
+import { Githubuser } from "./GithubUser";
+import { useCounter } from "./useCounter";
 
 export function App() {
   const [showCounter, setShowCounter] = useState(true)
+  const { counter, onIncrement } = useCounter()
+  const [username, setUsername] = useState('')
 
   function handleToggleCounter() {
     setShowCounter((s) => !s)
@@ -21,7 +25,10 @@ export function App() {
   return (
     <div>
       <Container title={<h1>My awesome Application</h1>}>
-        <Welcome name="Jimmy" />
+        <Welcome />
+        <Githubuser username={username}/>
+        <button onClick={onIncrement}>{counter}</button>
+        <input value ={username} onChange={(e) => setUsername(e.target.value)} />
         <button onClick={handleToggleCounter}>Toggle Counter</button>
         {showCounter && <HookCounter />}
         <LoginForm />
