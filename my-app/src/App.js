@@ -1,37 +1,23 @@
-import { Component, useState } from "react";
 import { Container } from "./Container";
 import { Clock } from "./Clock";
-import { LanguageContext } from "./LanguageContext";
 import { Welcome } from "./Welcome";
-import { Counter } from "./Counter";
-import { MyUncontrolledForm } from "./MyUncontrolledForm";
-import { MyLIst } from "./MyList";
-import { MyTodos } from "./MyTodos";
-import EnhancedMousePositionViewer from "./MousePositionViewer";
-import { MouseTracker } from "./MouseTracker";
-import { HookCounter } from "./HookCounter";
-import { LoginForm } from "./LoginForm";
-import { Githubuser } from "./GithubUser";
-import { useCounter } from "./useCounter";
+
+function computeExpensiveValue() {
+  for (let i = 0; i < 10e8; i++);
+
+  return 42;
+}
 
 export function App() {
-  const [showCounter, setShowCounter] = useState(true)
-  const { counter, onIncrement } = useCounter()
-  const [username, setUsername] = useState('')
+  // const result = useMemo(() => computeExpensiveValue(), [])
+  // const { counter, onIncrement } = useCounter()
 
-  function handleToggleCounter() {
-    setShowCounter((s) => !s)
-  }
   return (
     <div>
       <Container title={<h1>My awesome Application</h1>}>
+        {/* <h3>Expensive value is: {result}</h3>
+        <button onClick={onIncrement}>{counter}</button> */}
         <Welcome />
-        <Githubuser username={username}/>
-        <button onClick={onIncrement}>{counter}</button>
-        <input value ={username} onChange={(e) => setUsername(e.target.value)} />
-        <button onClick={handleToggleCounter}>Toggle Counter</button>
-        {showCounter && <HookCounter />}
-        <LoginForm />
         <Clock />
       </Container>
     </div>
@@ -44,6 +30,15 @@ export function App() {
 //   { id: 3, title: "Water the plants", completed: true },
 //   { id: 4, title: "Sleep", completed: true },
 // ];
+
+// export function App() {
+//   const [showCounter, setShowCounter] = useState(true)
+//   const { counter, onIncrement } = useCounter()
+//   const [username, setUsername] = useState('')
+
+//   function handleToggleCounter() {
+//     setShowCounter((s) => !s)
+//   }
 
 // export class App extends Component {
 //   state = {
@@ -86,7 +81,7 @@ export function App() {
 
 //         <Counter />
 //         <MyUncontrolledForm />
-//         <MyLIst names={["Jimmy", "Robert", "John", "John"]} />
+//         <MyList names={["Jimmy", "Robert", "John", "John"]} />
 //         <MyTodos todos={todos} />
 //       </div>
 //     );

@@ -1,13 +1,19 @@
-import React from "react";
-import { HelloWorld } from "./HelloWorld";
+import React, { useState } from "react";
 
 //function components do not have access to a "this"
 //cannot keep an internal state
 //not having an instance, they cannot be attached to a ref
-export function Welcome(name) {
+export function Welcome() {
+  const [name, setName] = useState("World");
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
   return (
     <div>
-      name && <h2>Hello, {name = 'World'}</h2>
+      <h2>Hello, {name}!</h2>
+      <input value={name} onChange={handleNameChange} />
     </div>
   );
 }
