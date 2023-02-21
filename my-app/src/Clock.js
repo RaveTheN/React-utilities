@@ -13,7 +13,7 @@ const Strings = {
 export class Clock extends Component {
   state = {
     date: new Date(),
-  }; //state is a special name, as it it its own thing, and we must use only "state" when we want to use it
+  }; //state is a special name, as it is its own thing, and we must use only "state" when we want to use it
 
   constructor(props) {
     super(props);
