@@ -1,31 +1,11 @@
-import { Container } from "./Container";
-import { Clock } from "./Clock";
-import { Welcome } from "./Welcome";
-import { LanguageContext } from "./LanguageContext";
 import { useState } from "react";
 
-export function App() {
-  const [language, setLanguage] = useState("en");
-
-  function handleChangeLanguage(event) {
-    setLanguage(event.target.value);
-  }
-
-  return (
+export function App() 
+   return (
     <div>
-      <select value={language} onChange={handleChangeLanguage}>
-        <option value="en">English</option>
-        <option value="it">Italiano</option>
-      </select>
-      <LanguageContext.Provider value={language}>
-        <Container title={<h1>My awesome Application</h1>}>
-          <Welcome />
-          <Clock />
-        </Container>
-      </LanguageContext.Provider>
+      <Routes></Routes>
     </div>
   );
-}
 
 // const todos = [
 //   { id: 1, title: "Buy Milk", completed: false },
