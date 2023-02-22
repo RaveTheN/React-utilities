@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-
-//function components do not have access to a "this"
-//cannot keep an internal state
-//not having an instance, they cannot be attached to a ref
+import React, { useEffect, useRef, useState } from "react";
+import { DisplayLanguage } from "./DisplayLanguage";
 export function Welcome() {
   const [name, setName] = useState("World");
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -12,8 +14,9 @@ export function Welcome() {
 
   return (
     <div>
+      <DisplayLanguage />
       <h2>Hello, {name}!</h2>
-      <input value={name} onChange={handleNameChange} />
+      <input ref={inputRef} value={name} onChange={handleNameChange} />
     </div>
   );
 }

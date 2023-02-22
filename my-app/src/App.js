@@ -1,25 +1,28 @@
 import { Container } from "./Container";
 import { Clock } from "./Clock";
 import { Welcome } from "./Welcome";
-
-function computeExpensiveValue() {
-  for (let i = 0; i < 10e8; i++);
-
-  return 42;
-}
+import { LanguageContext } from "./LanguageContext";
+import { useState } from "react";
 
 export function App() {
-  // const result = useMemo(() => computeExpensiveValue(), [])
-  // const { counter, onIncrement } = useCounter()
+  const [language, setLanguage] = useState("en");
+
+  function handleChangeLanguage(event) {
+    setLanguage(event.target.value);
+  }
 
   return (
     <div>
-      <Container title={<h1>My awesome Application</h1>}>
-        {/* <h3>Expensive value is: {result}</h3>
-        <button onClick={onIncrement}>{counter}</button> */}
-        <Welcome />
-        <Clock />
-      </Container>
+      <select value={language} onChange={handleChangeLanguage}>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+      </select>
+      <LanguageContext.Provider value={language}>
+        <Container title={<h1>My awesome Application</h1>}>
+          <Welcome />
+          <Clock />
+        </Container>
+      </LanguageContext.Provider>
     </div>
   );
 }
