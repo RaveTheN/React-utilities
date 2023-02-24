@@ -1,11 +1,40 @@
-import { useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+import { Welcome } from "./Welcome";
+import { Container } from "./Container";
+import { Catalogue } from "./Catalogue";
+import { Product } from "./Product";
 
-export function App() 
-   return (
-    <div>
-      <Routes></Routes>
-    </div>
+export function App() {
+  return (
+    <Container
+      title={
+        <div>
+          <h1>My awesome app</h1>
+          <div>
+            <Link to="/">Home</Link> | <Link to="products">Products</Link>
+          </div>
+        </div>
+      }
+    >
+      <Routes>
+        <Route path="/" element={<Welcome />} />
+        <Route path="products" element={<Catalogue />}>
+          <Route index element={<p>Please select a product</p>} />
+          <Route path=":id" element={<Product />} />
+        </Route>
+        <Route
+          path="*"
+          element={
+            <div>
+              <p>Not Found</p>
+              <Link to="/">Go Home</Link>
+            </div>
+          }
+        />
+      </Routes>
+    </Container>
   );
+}
 
 // const todos = [
 //   { id: 1, title: "Buy Milk", completed: false },
@@ -35,7 +64,7 @@ export function App()
 
 //   render() {
 //     return (
-//       <div>
+//       <Container>
 //         <select
 //           value={this.state.language}
 //           onChange={this.handleLanguageChange}
@@ -55,9 +84,9 @@ export function App()
 //           {(position) => {
 //             const [x, y] = position;
 //             return (
-//               <div>
+//               <Container>
 //                 The current position is {x}, {y}
-//               </div>
+//               </Container>
 //             );
 //           }}
 //         </MouseTracker>
@@ -66,7 +95,7 @@ export function App()
 //         <MyUncontrolledForm />
 //         <MyList names={["Jimmy", "Robert", "John", "John"]} />
 //         <MyTodos todos={todos} />
-//       </div>
+//       </Container>
 //     );
 //   }
 // }

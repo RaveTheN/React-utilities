@@ -1,25 +1,53 @@
-import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { DisplayLanguage } from "./DisplayLanguage";
+
 export function Welcome() {
-  const [name, setName] = useState("World");
-  const inputRef = useRef();
+  const { name = "Wario" } = useParams();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
+  const handleClick = () => {
+    navigate("/login");
   };
 
   return (
     <div>
       <DisplayLanguage />
       <h2>Hello, {name}!</h2>
-      <input ref={inputRef} value={name} onChange={handleNameChange} />
+      <Link to="/login">Login to the App</Link>
+      <button onClick={handleClick}>Login to the App</button>
     </div>
   );
 }
+
+// export function Welcome() {
+//   const [name, setName] = useState("World");
+//   const inputRef = useRef();
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     inputRef.current.focus();
+//   }, []);
+
+//   const handleNameChange = (event) => {
+//     setName(event.target.value);
+//   };
+
+//   const handleClick = () => {
+//     navigate("/login");
+//   };
+
+//   return (
+//     <div>
+//       <DisplayLanguage />
+//       <h2>Hello, {name}!</h2>
+//       <input ref={inputRef} value={name} onChange={handleNameChange} />
+//       <Link to="/login">Login to the App</Link>
+//       <button onClick={handleClick}>Login to the App</button>
+//     </div>
+//   );
+// }
+
+//component version
 
 // export class Welcome extends React.Component {
 //     render() {
