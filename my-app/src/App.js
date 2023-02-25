@@ -4,6 +4,8 @@ import { Container } from "./Container";
 import { Catalogue } from "./Catalogue";
 import { Product } from "./Product";
 import { GithubUsers } from "./GithubUsers";
+import { Githubuser } from "./GithubUser";
+import { TestRef } from "./TestRef";
 
 export function App() {
   return (
@@ -13,18 +15,21 @@ export function App() {
           <h1>My awesome app</h1>
           <div>
             <Link to="/">Home</Link> | <Link to="products">Products</Link> |{" "}
-            <Link to="users">Users</Link>
+            <Link to="users">Users</Link> | <Link to="test">TestRef</Link>
           </div>
         </div>
       }
     >
       <Routes>
+        <Route path="/test" element={<TestRef />}></Route>
         <Route path="/" element={<Welcome />} />
         <Route path="products" element={<Catalogue />}>
           <Route index element={<p>Please select a product</p>} />
           <Route path=":id" element={<Product />} />
         </Route>
-        <Route path="users" element={<GithubUsers />} />
+        <Route path="users" element={<GithubUsers />}>
+          <Route path=":username" element={<Githubuser />}></Route>
+        </Route>
         <Route
           path="*"
           element={
