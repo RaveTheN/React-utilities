@@ -3,6 +3,7 @@ import { Welcome } from "./Welcome";
 import { Container } from "./Container";
 import { Catalogue } from "./Catalogue";
 import { Product } from "./Product";
+import { GithubUsers } from "./GithubUsers";
 
 export function App() {
   return (
@@ -11,7 +12,8 @@ export function App() {
         <div>
           <h1>My awesome app</h1>
           <div>
-            <Link to="/">Home</Link> | <Link to="products">Products</Link>
+            <Link to="/">Home</Link> | <Link to="products">Products</Link> |{" "}
+            <Link to="users">Users</Link>
           </div>
         </div>
       }
@@ -22,6 +24,7 @@ export function App() {
           <Route index element={<p>Please select a product</p>} />
           <Route path=":id" element={<Product />} />
         </Route>
+        <Route path="users" element={<GithubUsers />} />
         <Route
           path="*"
           element={
