@@ -6,6 +6,7 @@ import { Product } from "./Product";
 import { GithubUsers } from "./GithubUsers";
 import { Githubuser } from "./GithubUser";
 import { TestRef } from "./TestRef";
+import { ComponenteQualsiasi } from "./ComponenteQualsiasi";
 
 export function App() {
   return (
@@ -21,6 +22,7 @@ export function App() {
       }
     >
       <Routes>
+        <Route path="/post" element={<ComponenteQualsiasi />} />
         <Route path="/test" element={<TestRef />}></Route>
         <Route path="/" element={<Welcome />} />
         <Route path="products" element={<Catalogue />}>
