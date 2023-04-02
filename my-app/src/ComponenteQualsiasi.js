@@ -2,7 +2,8 @@ import { useFetch } from "./useFetch";
 
 export const ComponenteQualsiasi = () => {
   const [data, error, reload] = useFetch(
-    "https://jsonplaceholder.typicode.com/posts"
+    "https://jsonplaceholder.typicode.com/posts",
+    { method: "POST", data: {} }
   );
 
   return (

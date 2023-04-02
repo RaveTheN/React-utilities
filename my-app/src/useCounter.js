@@ -11,9 +11,12 @@ export function useCounter(initialValue = 0) {
     setCounter((c) => c - 1);
   }, []);
 
-  const handleCounterReset = useCallback(function handleCounterReset() {
-    setCounter(initialValue);
-  }, [initialValue]);//always use the variable in the dependency array if you are useing them also inside the function
+  const handleCounterReset = useCallback(
+    function handleCounterReset() {
+      setCounter(initialValue);
+    },
+    [initialValue]
+  ); //always use the variable in the dependency array if you are using them also inside the function
 
   return {
     counter: counter,

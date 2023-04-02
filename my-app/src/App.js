@@ -7,6 +7,7 @@ import { GithubUsers } from "./GithubUsers";
 import { Githubuser } from "./GithubUser";
 import { TestRef } from "./TestRef";
 import { ComponenteQualsiasi } from "./ComponenteQualsiasi";
+import Carousel from "./Carousel";
 
 export function App() {
   return (
@@ -22,6 +23,7 @@ export function App() {
       }
     >
       <Routes>
+        <Route path="Carousel" element={<Carousel />} />
         <Route path="/post" element={<ComponenteQualsiasi />} />
         <Route path="/test" element={<TestRef />}></Route>
         <Route path="/" element={<Welcome />} />
